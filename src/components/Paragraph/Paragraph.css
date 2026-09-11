@@ -1,0 +1,20 @@
+.paragraph {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.paragraph-sm {
+  font-size: 14px;
+}
+
+.paragraph-md {
+  font-size: 16px;
+}
+
+.paragraph-lg {
+  font-size: 18px;
+}
+
+.paragraph-muted {
+  opacity: 0.6;
+}

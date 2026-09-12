@@ -1,0 +1,11 @@
+.search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.search .input-wrapper {
+  flex: 1;
+}

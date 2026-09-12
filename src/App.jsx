@@ -1,23 +1,36 @@
+// import { Header } from "@components/Header/Header";
+import { Layout } from "@components/Layout/Layout";
 import { Button } from "@components/Button/Button";
 import { Title } from "@components/Title/Title";
 import { Paragraph } from "@components/Paragraph/Paragraph";
+import { Input } from "@components/Input/Input";
+import { SearchIcon } from "@components/Icons/SearchIcon/SearchIcon";
+import { Search } from "@components/Search/Search";
 import "@styles/app.css";
 
 export default function App() {
   return (
-    <div className="container">
+    <Layout moviesCount={3}>
+      <Title size="lg">Поиск фильмов</Title>
+      <Search onSearch={(query) => console.log(query)} />
+      <hr />
+
       <Title as="h1" size="xl">
         Title
       </Title>
       <Paragraph>Hello World!</Paragraph>
       <hr />
       <div className="row">
-        <Button>Обычная</Button>
-        <Button variant="secondary">Вторичная</Button>
-        <Button variant="ghost" size="sm">
+        <Button onClick={() => console.log("simple")}>Обычная</Button>
+        <Button onClick={() => console.log("secondary")} variant="secondary">
+          Вторичная
+        </Button>
+        <Button onClick={() => console.log("small")} variant="ghost" size="sm">
           Маленькая
         </Button>
-        <Button variant="danger">Удалить</Button>
+        <Button onClick={() => console.log("remove")} variant="danger">
+          Удалить
+        </Button>
       </div>
       <hr />
       <div className="stack">
@@ -39,6 +52,14 @@ export default function App() {
 
         <Paragraph size="lg">Более крупный текст.</Paragraph>
       </div>
-    </div>
+      <hr />
+      <Input placeholder="Введите текст..." />
+      <Input placeholder="Поиск..." icon={<SearchIcon size={18} />} />
+      <Input
+        placeholder="Поиск..."
+        icon={<SearchIcon size={18} />}
+        iconPosition="right"
+      />
+    </Layout>
   );
 }

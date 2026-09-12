@@ -5,11 +5,13 @@ export const Button = ({
   variant = "primary",
   size = "md",
   className = "",
+  onClick,
   ...props
 }) => {
   return (
     <button
       className={`button button-${variant} button-${size} ${className}`}
+      onClick={onClick}
       {...props}
     >
       {children}

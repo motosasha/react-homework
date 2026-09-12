@@ -4,7 +4,6 @@ import { Paragraph } from "@components/Paragraph/Paragraph";
 import { Search } from "@components/Search/Search";
 import { MoviesGrid } from "@components/MoviesGrid/MoviesGrid";
 import { movies } from "@data/movies.js";
-import "@styles/app.css";
 
 export default function App() {
   return (

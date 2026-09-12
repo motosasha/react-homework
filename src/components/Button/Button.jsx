@@ -1,4 +1,5 @@
-import "./Button.css";
+import cn from "classnames";
+import styles from "./Button.module.css";
 
 export const Button = ({
   children,
@@ -10,7 +11,7 @@ export const Button = ({
 }) => {
   return (
     <button
-      className={`button button-${variant} button-${size} ${className}`}
+      className={cn(styles.button, styles[variant], styles[size], className)}
       onClick={onClick}
       {...props}
     >

@@ -2,7 +2,7 @@
   min-height: 100vh;
 }
 
-.layout__content {
+.content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 24px;

@@ -1,11 +1,12 @@
+import cn from "classnames";
 import { Header } from "@components/Header/Header";
-import "./Layout.css";
+import styles from "./Layout.module.css";
 
 export function Layout({ children, moviesCount = 0, className = "" }) {
   return (
-    <div className={`layout ${className}`}>
+    <div className={cn(styles.layout, className)}>
       <Header moviesCount={moviesCount} />
-      <main className="layout__content">{children}</main>
+      <main className={styles.content}>{children}</main>
     </div>
   );
 }

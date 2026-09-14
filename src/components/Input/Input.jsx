@@ -2,6 +2,7 @@ import cn from "classnames";
 import styles from "./Input.module.css";
 
 export const Input = ({
+  ref,
   icon,
   iconPosition = "left",
   name,
@@ -15,6 +16,7 @@ export const Input = ({
       )}
 
       <input
+        ref={ref}
         name={name}
         className={cn(
           styles.input,

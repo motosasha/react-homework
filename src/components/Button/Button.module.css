@@ -18,60 +18,60 @@
 }
 
 /* Размеры */
-.button-sm {
+.sm {
   height: 32px;
   padding: 0 12px;
   font-size: 13px;
 }
 
-.button-md {
+.md {
   height: 40px;
   padding: 0 16px;
   font-size: 14px;
 }
 
-.button-lg {
+.lg {
   height: 48px;
   padding: 0 20px;
   font-size: 16px;
 }
 
 /* Варианты */
-.button-primary {
+.primary {
   background-color: #3b82f6;
   color: #fff;
 }
 
-.button-primary:hover:not(:disabled) {
+.primary:hover:not(:disabled) {
   background-color: #2563eb;
 }
 
-.button-secondary {
+.secondary {
   background-color: #1e293b;
   color: #f1f5f9;
   border-color: #334155;
 }
 
-.button-secondary:hover:not(:disabled) {
+.secondary:hover:not(:disabled) {
   background-color: #334155;
   border-color: #475569;
 }
 
-.button-ghost {
+.ghost {
   background-color: transparent;
   color: #94a3b8;
 }
 
-.button-ghost:hover:not(:disabled) {
+.ghost:hover:not(:disabled) {
   background-color: #1e293b;
   color: #f1f5f9;
 }
 
-.button-danger {
+.danger {
   background-color: #ef4444;
   color: #fff;
 }
 
-.button-danger:hover:not(:disabled) {
+.danger:hover:not(:disabled) {
   background-color: #dc2626;
 }

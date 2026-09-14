@@ -3,18 +3,18 @@
   line-height: 1.6;
 }
 
-.paragraph-sm {
+.sm {
   font-size: 14px;
 }
 
-.paragraph-md {
+.md {
   font-size: 16px;
 }
 
-.paragraph-lg {
+.lg {
   font-size: 18px;
 }
 
-.paragraph-muted {
+.muted {
   opacity: 0.6;
 }

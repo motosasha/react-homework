@@ -1,4 +1,5 @@
-import "./Title.css";
+import cn from "classnames";
+import styles from "./Title.module.css";
 
 export const Title = ({
   children,
@@ -6,5 +7,7 @@ export const Title = ({
   size = "md",
   className = "",
 }) => {
-  return <Tag className={`title title-${size} ${className}`}>{children}</Tag>;
+  return (
+    <Tag className={cn(styles.title, styles[size], className)}>{children}</Tag>
+  );
 };

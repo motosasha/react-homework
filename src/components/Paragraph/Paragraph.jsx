@@ -1,4 +1,5 @@
-import "./Paragraph.css";
+import cn from "classnames";
+import styles from "./Paragraph.module.css";
 
 export const Paragraph = ({
   children,
@@ -8,7 +9,12 @@ export const Paragraph = ({
 }) => {
   return (
     <p
-      className={`paragraph paragraph-${size} ${muted ? "paragraph-muted" : ""} ${className}`}
+      className={cn(
+        styles.paragraph,
+        styles[size],
+        muted && styles.muted,
+        className,
+      )}
     >
       {children}
     </p>

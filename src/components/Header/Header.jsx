@@ -1,8 +1,14 @@
 import cn from "classnames";
 import { LoginIcon } from "@components/Icons/LoginIcon/LoginIcon";
+import { Button } from "@components/Button/Button";
 import styles from "./Header.module.css";
 
-export function Header({ moviesCount = 0, className = "" }) {
+export function Header({
+  moviesCount = 0,
+  user = null,
+  onLogout,
+  className = "",
+}) {
   return (
     <header className={cn(styles["site-header"], className)}>
       <div className={styles.inner}>
@@ -22,10 +28,24 @@ export function Header({ moviesCount = 0, className = "" }) {
             )}
           </a>
 
-          <a href="/login" className={cn(styles.link, styles["link--login"])}>
-            <LoginIcon />
-            Войти
-          </a>
+          {user ?
+            <div className={styles.user}>
+              <span className={styles.userName}>{user.name}</span>
+              <Button variant="ghost" size="sm" onClick={onLogout}>
+                Выйти
+              </Button>
+            </div>
+          : <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                window.location.href = "/login";
+              }}
+            >
+              <LoginIcon />
+              Войти
+            </Button>
+          }
         </nav>
       </div>
     </header>

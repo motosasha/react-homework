@@ -68,3 +68,15 @@
   background-color: #3b82f6;
   border-radius: 999px;
 }
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f1f5f9;
+}

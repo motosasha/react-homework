@@ -3,7 +3,7 @@
   background-color: #0f172a;
 }
 
-.site-header__inner {
+.inner {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
@@ -13,7 +13,7 @@
   justify-content: space-between;
 }
 
-.site-header__logo {
+.logo {
   font-size: 20px;
   font-weight: 700;
   color: #f8fafc;
@@ -21,13 +21,13 @@
   letter-spacing: -0.02em;
 }
 
-.site-header__nav {
+.nav {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.site-header__link {
+.link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -41,21 +41,21 @@
   position: relative;
 }
 
-.site-header__link:hover {
+.link:hover {
   color: #f1f5f9;
   background-color: #1e293b;
 }
 
-.site-header__link--login {
+.link--login {
   color: #60a5fa;
 }
 
-.site-header__link--login:hover {
+.link--login:hover {
   background-color: rgba(59, 130, 246, 0.15);
   color: #93c5fd;
 }
 
-.site-header__badge {
+.badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -67,4 +67,16 @@
   color: #fff;
   background-color: #3b82f6;
   border-radius: 999px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f1f5f9;
 }

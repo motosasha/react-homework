@@ -1,24 +1,33 @@
-import "./Input.css";
+import cn from "classnames";
+import styles from "./Input.module.css";
 
 export const Input = ({
+  ref,
   icon,
   iconPosition = "left",
+  name,
   className = "",
   ...props
 }) => {
   return (
-    <div className={`input-wrapper ${className}`}>
+    <div className={cn(styles.wrapper, className)}>
       {icon && iconPosition === "left" && (
-        <span className="input-icon input-icon-left">{icon}</span>
+        <span className={cn(styles.icon, styles["icon-left"])}>{icon}</span>
       )}
 
       <input
-        className={`input ${icon ? `input-with-icon-${iconPosition}` : ""}`}
+        ref={ref}
+        name={name}
+        className={cn(
+          styles.input,
+          icon &&
+            styles[`with-icon${iconPosition === "left" ? "-left" : "-right"}`],
+        )}
         {...props}
       />
 
       {icon && iconPosition === "right" && (
-        <span className="input-icon input-icon-right">{icon}</span>
+        <span className={cn(styles.icon, styles["icon-right"])}>{icon}</span>
       )}
     </div>
   );

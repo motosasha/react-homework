@@ -1,15 +1,18 @@
+import cn from "classnames";
 import { MovieCard } from "@components/MovieCard/MovieCard";
-import "./MoviesGrid.css";
+import styles from "./MoviesGrid.module.css";
 
 export function MoviesGrid({ movies, onToggleFavorite, className = "" }) {
   if (movies.length === 0) {
     return (
-      <div className="movies-grid movies-grid--empty">Фильмы не найдены</div>
+      <div className={cn(styles["movies-grid"], styles.empty)}>
+        Фильмы не найдены
+      </div>
     );
   }
 
   return (
-    <div className={`movies-grid ${className}`}>
+    <div className={cn(styles["movies-grid"], className)}>
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}

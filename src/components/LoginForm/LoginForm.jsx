@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
-import { login } from "@utils/auth";
+import { useAuth } from "@context/AuthContext";
 import styles from "./LoginForm.module.css";
 
-export function LoginForm({ onSuccess }) {
+export function LoginForm() {
+  const { login } = useAuth();
   const [name, setName] = useState("");
   const [error, setError] = useState("");
 
@@ -18,8 +19,6 @@ export function LoginForm({ onSuccess }) {
       setError("Введите имя");
       return;
     }
-
-    onSuccess?.(user);
   }
 
   return (

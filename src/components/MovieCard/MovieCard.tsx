@@ -1,8 +1,19 @@
 import cn from "classnames";
 import { HeartIcon } from "@components/Icons/HeartIcon/HeartIcon";
+import type { Movie } from "@data/movies.data";
 import styles from "./MovieCard.module.css";
 
-export function MovieCard({ movie, onToggleFavorite, className = "" }) {
+interface MovieCardProps {
+  movie: Movie;
+  onToggleFavorite?: (id: number) => void;
+  className?: string;
+}
+
+export function MovieCard({
+  movie,
+  onToggleFavorite,
+  className = "",
+}: MovieCardProps) {
   return (
     <article className={cn(styles["movie-card"], className)}>
       <div className={styles["poster-wrapper"]}>

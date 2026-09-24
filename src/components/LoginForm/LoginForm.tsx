@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type SubmitEventHandler } from "react";
 import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
 import { useAuth } from "@context/AuthContext";
@@ -9,7 +9,7 @@ export function LoginForm() {
   const [name, setName] = useState("");
   const [error, setError] = useState("");
 
-  function handleSubmit(e) {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     setError("");
 
@@ -19,7 +19,7 @@ export function LoginForm() {
       setError("Введите имя");
       return;
     }
-  }
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>

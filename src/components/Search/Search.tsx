@@ -1,18 +1,24 @@
 import cn from "classnames";
-import { useState } from "react";
+import { useState, type SubmitEventHandler } from "react";
 import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
 import { SearchIcon } from "@components/Icons/SearchIcon/SearchIcon";
 import styles from "./Search.module.css";
 
+interface SearchProps {
+  placeholder?: string;
+  onSearch?: (query: string) => void;
+  className?: string;
+}
+
 export function Search({
   placeholder = "Поиск фильмов...",
   onSearch,
   className = "",
-}) {
+}: SearchProps) {
   const [value, setValue] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     onSearch?.(value.trim());
   };

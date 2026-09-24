@@ -1,4 +1,13 @@
-export const movies = [
+export interface Movie {
+  id: number;
+  title: string;
+  year: number;
+  rating: number;
+  poster: string;
+  isFavorite: boolean;
+}
+
+export const movies: Movie[] = [
   {
     id: 1,
     title: "Inception",

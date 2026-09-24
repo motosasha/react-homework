@@ -1,24 +1,30 @@
 const STORAGE_KEY = "profiles";
 
-export function getProfiles() {
+export interface Profile {
+  name: string;
+  isLogined: boolean;
+}
+
+export function getProfiles(): Profile[] {
   const raw = localStorage.getItem(STORAGE_KEY);
   if (!raw) return [];
+
   try {
-    return JSON.parse(raw);
+    return JSON.parse(raw) as Profile[];
   } catch {
     return [];
   }
 }
 
-export function saveProfiles(profiles) {
+export function saveProfiles(profiles: Profile[]): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
 }
 
-export function getCurrentUser() {
-  return getProfiles().find((p) => p.isLogined) || null;
+export function getCurrentUser(): Profile | null {
+  return getProfiles().find((p) => p.isLogined) ?? null;
 }
 
-export function login(name) {
+export function login(name: string): Profile | null {
   const trimmed = name.trim();
   if (!trimmed) return null;
 
@@ -30,9 +36,9 @@ export function login(name) {
 
   if (existing) {
     profiles = profiles.map((p) =>
-      p.name.toLowerCase() === trimmed.toLowerCase() ?
-        { ...p, isLogined: true }
-      : p,
+      p.name.toLowerCase() === trimmed.toLowerCase()
+        ? { ...p, isLogined: true }
+        : p,
     );
   } else {
     profiles.push({ name: trimmed, isLogined: true });
@@ -42,7 +48,7 @@ export function login(name) {
   return getCurrentUser();
 }
 
-export function logout() {
+export function logout(): void {
   const profiles = getProfiles().map((p) => ({ ...p, isLogined: false }));
   saveProfiles(profiles);
 }

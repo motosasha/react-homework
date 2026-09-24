@@ -1,14 +1,25 @@
 import cn from "classnames";
+import type { InputHTMLAttributes, ReactNode, Ref } from "react";
 import styles from "./Input.module.css";
 
-export const Input = ({
+type IconPosition = "left" | "right";
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  ref?: Ref<HTMLInputElement>;
+  icon?: ReactNode;
+  iconPosition?: IconPosition;
+  name?: string;
+  className?: string;
+}
+
+export function Input({
   ref,
   icon,
   iconPosition = "left",
   name,
   className = "",
   ...props
-}) => {
+}: InputProps) {
   return (
     <div className={cn(styles.wrapper, className)}>
       {icon && iconPosition === "left" && (
@@ -20,8 +31,11 @@ export const Input = ({
         name={name}
         className={cn(
           styles.input,
-          icon &&
-            styles[`with-icon${iconPosition === "left" ? "-left" : "-right"}`],
+          icon ?
+            styles[
+              `with-icon${iconPosition === "left" ? "-left" : "-right"}` as keyof typeof styles
+            ]
+          : undefined,
         )}
         {...props}
       />
@@ -31,4 +45,4 @@ export const Input = ({
       )}
     </div>
   );
-};
+}

@@ -1,9 +1,20 @@
+import type { ReactNode } from "react";
 import cn from "classnames";
 import { Header } from "@components/Header/Header";
 import { useAuth } from "@context/AuthContext";
 import styles from "./Layout.module.css";
 
-export function Layout({ children, moviesCount = 0, className = "" }) {
+interface LayoutProps {
+  children: ReactNode;
+  moviesCount?: number;
+  className?: string;
+}
+
+export function Layout({
+  children,
+  moviesCount = 0,
+  className = "",
+}: LayoutProps) {
   const { user, logout } = useAuth();
 
   return (

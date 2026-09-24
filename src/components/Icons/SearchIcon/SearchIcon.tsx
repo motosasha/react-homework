@@ -1,4 +1,15 @@
-export function SearchIcon({ size = 18, className = "" }) {
+import type { SVGProps } from "react";
+
+interface SearchIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+  className?: string;
+}
+
+export function SearchIcon({
+  size = 18,
+  className = "",
+  ...props
+}: SearchIconProps) {
   return (
     <svg
       width={size}
@@ -10,6 +21,7 @@ export function SearchIcon({ size = 18, className = "" }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
+      {...props}
     >
       <circle cx="11" cy="11" r="8" />
       <path d="m21 21-4.3-4.3" />

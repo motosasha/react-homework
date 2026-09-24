@@ -4,7 +4,7 @@ import { Title } from "@components/Title/Title";
 import { Paragraph } from "@components/Paragraph/Paragraph";
 import { Search } from "@components/Search/Search";
 import { MoviesGrid } from "@components/MoviesGrid/MoviesGrid";
-import { movies } from "@data/movies.js";
+import { movies } from "@data/movies.data";
 import { AuthProvider } from "@context/AuthContext";
 
 export default function App() {

@@ -1,19 +1,23 @@
+import cn from "classnames";
 import { HeartIcon } from "@components/Icons/HeartIcon/HeartIcon";
-import "./MovieCard.css";
+import styles from "./MovieCard.module.css";
 
 export function MovieCard({ movie, onToggleFavorite, className = "" }) {
   return (
-    <article className={`movie-card ${className}`}>
-      <div className="movie-card__poster-wrapper">
+    <article className={cn(styles["movie-card"], className)}>
+      <div className={styles["poster-wrapper"]}>
         <img
           src={movie.poster}
           alt={movie.title}
-          className="movie-card__poster"
+          className={styles.poster}
           loading="lazy"
         />
 
         <button
-          className={`movie-card__favorite ${movie.isFavorite ? "is-active" : ""}`}
+          className={cn(
+            styles.favorite,
+            movie.isFavorite && styles["is-active"],
+          )}
           onClick={() => onToggleFavorite?.(movie.id)}
           aria-label={
             movie.isFavorite ? "Убрать из избранного" : "Добавить в избранное"
@@ -23,12 +27,12 @@ export function MovieCard({ movie, onToggleFavorite, className = "" }) {
         </button>
       </div>
 
-      <div className="movie-card__body">
-        <h3 className="movie-card__title">{movie.title}</h3>
+      <div className={styles.body}>
+        <h3 className={styles.title}>{movie.title}</h3>
 
-        <div className="movie-card__meta">
-          <span className="movie-card__year">{movie.year}</span>
-          <span className="movie-card__rating">★ {movie.rating}</span>
+        <div className={styles.meta}>
+          <span className={styles.year}>{movie.year}</span>
+          <span className={styles.rating}>★ {movie.rating}</span>
         </div>
       </div>
     </article>

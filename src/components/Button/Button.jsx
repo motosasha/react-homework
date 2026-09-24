@@ -1,6 +1,8 @@
-import "./Button.css";
+import cn from "classnames";
+import styles from "./Button.module.css";
 
 export const Button = ({
+  ref,
   children,
   variant = "primary",
   size = "md",
@@ -10,7 +12,8 @@ export const Button = ({
 }) => {
   return (
     <button
-      className={`button button-${variant} button-${size} ${className}`}
+      ref={ref}
+      className={cn(styles.button, styles[variant], styles[size], className)}
       onClick={onClick}
       {...props}
     >

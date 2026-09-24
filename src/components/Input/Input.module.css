@@ -1,4 +1,4 @@
-.input-wrapper {
+.wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -34,15 +34,15 @@
 }
 
 /* Когда есть иконка */
-.input-with-icon-left {
+.with-icon-left {
   padding-left: 40px;
 }
 
-.input-with-icon-right {
+.with-icon-right {
   padding-right: 40px;
 }
 
-.input-icon {
+.icon {
   position: absolute;
   display: flex;
   align-items: center;
@@ -53,10 +53,10 @@
   pointer-events: none;
 }
 
-.input-icon-left {
+.icon-left {
   left: 0;
 }
 
-.input-icon-right {
+.icon-right {
   right: 0;
 }

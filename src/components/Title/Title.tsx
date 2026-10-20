@@ -5,19 +5,12 @@ import styles from "./Title.module.css";
 type TitleSize = "sm" | "md" | "lg";
 
 interface TitleProps {
-  children: ReactNode;
-  as?: ElementType;
-  size?: TitleSize;
-  className?: string;
+	children: ReactNode;
+	as?: ElementType;
+	size?: TitleSize;
+	className?: string;
 }
 
-export function Title({
-  children,
-  as: Tag = "h2",
-  size = "md",
-  className = "",
-}: TitleProps) {
-  return (
-    <Tag className={cn(styles.title, styles[size], className)}>{children}</Tag>
-  );
+export function Title({ children, as: Tag = "h2", size = "md", className = "" }: TitleProps) {
+	return <Tag className={cn(styles.title, styles[size], className)}>{children}</Tag>;
 }

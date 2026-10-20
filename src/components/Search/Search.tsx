@@ -6,35 +6,35 @@ import { SearchIcon } from "@components/Icons/SearchIcon/SearchIcon";
 import styles from "./Search.module.css";
 
 interface SearchProps {
-  placeholder?: string;
-  onSearch?: (query: string) => void;
-  className?: string;
+	placeholder?: string;
+	onSearch?: (query: string) => void;
+	className?: string;
 }
 
 export function Search({
-  placeholder = "Поиск фильмов...",
-  onSearch,
-  className = "",
+	placeholder = "Поиск фильмов...",
+	onSearch,
+	className = ""
 }: SearchProps) {
-  const [value, setValue] = useState("");
+	const [value, setValue] = useState("");
 
-  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    onSearch?.(value.trim());
-  };
+	const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
+		e.preventDefault();
+		onSearch?.(value.trim());
+	};
 
-  return (
-    <form className={cn(styles.search, className)} onSubmit={handleSubmit}>
-      <Input
-        name="search"
-        type="search"
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        icon={<SearchIcon />}
-        className={styles.input}
-      />
-      <Button type="submit">Найти</Button>
-    </form>
-  );
+	return (
+		<form className={cn(styles.search, className)} onSubmit={handleSubmit}>
+			<Input
+				name="search"
+				type="search"
+				placeholder={placeholder}
+				value={value}
+				onChange={(e) => setValue(e.target.value)}
+				icon={<SearchIcon />}
+				className={styles.input}
+			/>
+			<Button type="submit">Найти</Button>
+		</form>
+	);
 }

@@ -27,3 +27,13 @@ body {
 	flex-direction: column;
 	gap: 16px;
 }
+
+.loading {
+	margin-top: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+	color: #94a3b8;
+	font-size: 15px;
+}

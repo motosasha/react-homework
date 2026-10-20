@@ -1,0 +1,11 @@
+.page {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.reviews {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 20px;
+}

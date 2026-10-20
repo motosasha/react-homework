@@ -20,6 +20,11 @@
 	font-size: 14px;
 	line-height: 1.6;
 	color: #cbd5e1;
+	white-space: pre-line;
+	display: -webkit-box;
+	-webkit-line-clamp: 8;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .date {

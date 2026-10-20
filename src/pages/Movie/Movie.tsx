@@ -1,33 +1,33 @@
-import { useParams } from "react-router";
+import { useLoaderData } from "react-router";
 import { MovieDetails } from "@components/MovieDetails/MovieDetails";
 import { ReviewCard } from "@components/ReviewCard/ReviewCard";
 import { Paragraph } from "@components/Paragraph/Paragraph";
 import { Title } from "@components/Title/Title";
-import { movies } from "@data/movies.data";
-import { movieDetails, reviews } from "@data/movie-details.data";
+import type { MovieLoaderData } from "./movie.loader";
 import styles from "./Movie.module.css";
 
 export default function Movie() {
-	const { id } = useParams();
-	const movieId = Number(id);
-	const movie = movies.find((m) => m.id === movieId);
-	const details = movieDetails[movieId];
+	const { details, reviews } = useLoaderData<MovieLoaderData>();
 
-	if (!movie || !details) {
+	if (!details) {
 		return <Paragraph muted>Фильм не найден</Paragraph>;
 	}
 
 	return (
 		<div className={styles.page}>
-			<MovieDetails movie={movie} details={details} />
+			<MovieDetails details={details} />
 
 			<section className="stack">
 				<Title size="md">Отзывы</Title>
-				<div className={styles.reviews}>
-					{reviews.map((review) => (
-						<ReviewCard key={review.id} review={review} />
-					))}
-				</div>
+				{reviews.length === 0 ? (
+					<Paragraph muted>Отзывов пока нет</Paragraph>
+				) : (
+					<div className={styles.reviews}>
+						{reviews.map((review) => (
+							<ReviewCard key={review.id} review={review} />
+						))}
+					</div>
+				)}
 			</section>
 		</div>
 	);

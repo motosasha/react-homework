@@ -6,6 +6,7 @@ import Login from "@pages/Login/Login";
 import Movie from "@pages/Movie/Movie";
 import { RouteError } from "@components/RouteError/RouteError";
 import { movieLoader } from "@pages/Movie/movie.loader";
+import { withAuth } from "@utils/with-auth";
 import NotFound from "@pages/NotFound/NotFound";
 import Favorites from "@pages/Favorites/Favorites";
 
@@ -17,18 +18,16 @@ export const router = createBrowserRouter([
 			{
 				errorElement: <RouteError />,
 				children: [
-					{ index: true, element: <Home /> },
 					{ path: "login", element: <Login /> },
-					{ path: "movie/:id", element: <Movie />, loader: movieLoader },
 					{
-						path: "favorites",
-						element: (
-							<RequireAuth>
-								<Favorites />
-							</RequireAuth>
-						)
-					},
-					{ path: "*", element: <NotFound /> }
+						element: <RequireAuth />,
+						children: [
+							{ index: true, element: <Home /> },
+							{ path: "movie/:id", element: <Movie />, loader: withAuth(movieLoader) },
+							{ path: "favorites", element: <Favorites /> },
+							{ path: "*", element: <NotFound /> }
+						]
+					}
 				]
 			}
 		]

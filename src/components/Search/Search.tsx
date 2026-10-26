@@ -7,16 +7,18 @@ import styles from "./Search.module.css";
 
 interface SearchProps {
 	placeholder?: string;
+	defaultValue?: string;
 	onSearch?: (query: string) => void;
 	className?: string;
 }
 
 export function Search({
 	placeholder = "Поиск фильмов...",
+	defaultValue = "",
 	onSearch,
 	className = ""
 }: SearchProps) {
-	const [value, setValue] = useState("");
+	const [value, setValue] = useState(defaultValue);
 
 	const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();

@@ -3,28 +3,28 @@ import { HeartIcon } from "@components/Icons/HeartIcon/HeartIcon";
 import { Paragraph } from "@components/Paragraph/Paragraph";
 import { Title } from "@components/Title/Title";
 import { useAuth } from "@context/auth-context";
-import type { Movie } from "@data/movies.data";
-import type { MovieDetails as MovieDetailsData } from "@data/movie-details.data";
+import type { MovieDetails as MovieDetailsData } from "@api/tmdb";
 import styles from "./MovieDetails.module.css";
 
 interface MovieDetailsProps {
-	movie: Movie;
 	details: MovieDetailsData;
 	className?: string;
 }
 
-export function MovieDetails({ movie, details, className = "" }: MovieDetailsProps) {
+export function MovieDetails({ details, className = "" }: MovieDetailsProps) {
 	const { user } = useAuth();
+	const { movie } = details;
 
 	const info = [
-		{ label: "Тип", value: details.type },
+		{ label: "Оригинальное название", value: details.originalTitle },
 		{
 			label: "Дата выхода",
-			value: new Date(details.releaseDate).toLocaleDateString("ru-RU")
+			value: details.releaseDate && new Date(details.releaseDate).toLocaleDateString("ru-RU")
 		},
-		{ label: "Длительность", value: `${details.duration} мин` },
+		{ label: "Длительность", value: details.duration > 0 && `${details.duration} мин` },
+		{ label: "Страна", value: details.countries.join(", ") },
 		{ label: "Жанр", value: details.genres.join(", ") }
-	];
+	].filter((item) => item.value);
 
 	return (
 		<section className={cn(styles["movie-details"], className)}>
@@ -45,7 +45,9 @@ export function MovieDetails({ movie, details, className = "" }: MovieDetailsPro
 
 				<span className={styles.rating}>★ {movie.rating}</span>
 
-				<Paragraph>{details.description}</Paragraph>
+				{details.tagline && <Paragraph muted>{details.tagline}</Paragraph>}
+
+				<Paragraph>{details.description || "Описание отсутствует"}</Paragraph>
 
 				<dl className={styles.info}>
 					{info.map(({ label, value }) => (
